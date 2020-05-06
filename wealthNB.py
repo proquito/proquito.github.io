@@ -9,13 +9,13 @@ import pandas as pd
 
 data = pd.read_csv(r"C:\Users\Wilson.Ramapuputla\Desktop\ML\wealthNB.csv", index_col=[], header=0)
 
-#print(data.head(5))
-#print(list(data.columns))
+print(data.head(5))
+print(list(data.columns))
 
-#print(data.info())
-#data[data.WorkClass != '?']
+print(data.info())
+data[data.WorkClass != '?']
 
-#print(list(data.columns))
+print(list(data.columns))
 
 features = "Age"#, "WorkClass"#, ' fnlwgt', ' Education', ' Education-num', ' Marital-status', ' Occupation', ' Relationship', ' Race', ' Sex', ' Capital-gain', ' Capital-loss', ' Hours', ' Country'
 target = " Income"
@@ -24,8 +24,6 @@ data_2 = data[['Age', ' WorkClass', ' fnlwgt', ' Education-num', ' Marital-statu
 
 
 y = data[target]
-
-#x = data_2.copy()
 
 
 x = data.iloc[:, [0,1,3,5,6,8,9,10,12,13]]
