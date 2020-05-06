@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
 import numpy as np
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
@@ -140,24 +139,23 @@ simplefilter(action='ignore', category=FutureWarning)
 
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state=0)
-#scaler = StandardScaler()
-#x_train = scaler.fit_transform(x_train)
-#x_test = scaler.fit_transform(x_test)
+scaler = StandardScaler()
+x_train = scaler.fit_transform(x_train)
+x_test = scaler.fit_transform(x_test)
 
-#from xgboost import XGBClassifier, plot_importance
-model = XGBClassifier()
-model.fit(x_train, y_train)
+from xgboost import XGBClassifier, plot_importance
+
 from xgboost import plot_importance
 plot_importance(model)
 
-#model = RandomForestClassifier(SelectPercentile (LogisticRegression(C=0.0001, dual=False, penalty=11), percentile=5), bootstrap=False, criterion='entropy', max_features=0.6500000000000001, min_samples_leaf=1, min_samples_split=8, n_estimators=2)
-#model.fit(x_train,target)
+model = RandomForestClassifier(SelectPercentile (LogisticRegression(C=0.0001, dual=False, penalty=11), percentile=5), bootstrap=False, criterion='entropy', max_features=0.6500000000000001, min_samples_leaf=1, min_samples_split=8, n_estimators=2)
+model.fit(x_train,target)
 
 prediction = model.predict(x_test)
 
-#print("F1 Score:", metrics.f1_score(y_test, prediction, average="weighted"))
+print("F1 Score:", metrics.f1_score(y_test, prediction, average="weighted"))
 print("Confusion_matrics:", confusion_matrix(y_test, prediction))
 
 df = pd.DataFrame(prediction)
-#df.to_csv(r"C:\Users\Wilson.Ramapuputla\Desktop\ML\Ressyyyy.csv",index=False)
+
 
