@@ -2,6 +2,8 @@
 
 This is where you can find some of my Data science projects, from regression to classification
 
+FORGET AOUT THE REST GO TO THE BOTTOM OF THE PAGE AND CLICK THE LINK TO THE REPOSITORY PROQUITO
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
