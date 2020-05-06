@@ -34,7 +34,7 @@ rf = RandomForestRegressor(n_estimators=10, n_jobs=-1, oob_score=True)
 model=rf.fit(x_train, y_train)
 predictions = rf.predict(x_test)
 print(rf.score(predictions,y_test))
-#print(rf.oob_score_)
+print(rf.oob_score_)
 from sklearn.metrics import f1_score
 from sklearn import metrics
 
@@ -80,6 +80,6 @@ plt.plot(y_test)
 #Microsoft.set_index('date', inplace=True)
 
 from sklearn.model_selection import train_test_split
-#train_data = scale(train)
-#test_data = scale(test)
+train_data = scale(train)
+test_data = scale(test)
 
