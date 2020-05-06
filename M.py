@@ -23,11 +23,11 @@ target = "close"
 y=Microsoft[target]
 x = Microsoft.iloc[:, [2,3,4,5,6,7,8]]
 
-# x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state=None)
-#
-# scaler = StandardScaler()
-# x_train = scaler.fit_transform(x_train)
-# x_test = scaler.fit_transform(x_test)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.3, random_state=None)
+
+ scaler = StandardScaler()
+x_train = scaler.fit_transform(x_train)
+x_test = scaler.fit_transform(x_test)
 
 
 xs= scale(x)
@@ -38,23 +38,12 @@ y_train=y[0:44]
 y_test = y[45:]
 
 from sklearn.linear_model import RidgeCV
-from sklearn.linear_model import LassoLarsCV
 
-from sklearn.ensemble import RandomForestRegressor
-# rf = RandomForestRegressor()
-
-
-#rf = LassoLarsCV(normalize=False)
 rf = RidgeCV()
 model=rf.fit(x_train,y_train)
 predictions = rf.predict(x_test)
 print(rf.score(x_train,y_train))
 
-# print(rf.score(predictions,y_test))
-# from xgboost import XGBRegressor
-# models = XGBRegressor()
-# models.fit(x_train, y_train)
-# predictions = models.predict(x_test)
 
 errors = abs(predictions - y_test)
 
@@ -77,7 +66,6 @@ print(r2_score(df['actual'], df['prediction'] ))
 
 
 
-#movement= (y[44]-df['actual'][45],df['actual'][45]-df['actual'][46],df['actual'][46]-df['actual'][47],df['actual'][47]-df['actual'][48],df['actual'][48]-df['actual'][49],df['actual'][49]-df['actual'][50],df['actual'][50]-df['actual'][51],df['actual'][51]-df['actual'][52])
 
 
 actuals_move = pd.DataFrame()
