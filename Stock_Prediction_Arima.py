@@ -18,17 +18,17 @@ fundamentals = pd.read_csv(r"C:\Users\Wilson.Ramapuputla\Desktop\ML\NYSE\fundame
 
 
 
-#prices['date']=prices['date'].replace({'00:00:00': ''}, regex=True)
+prices['date']=prices['date'].replace({'00:00:00': ''}, regex=True)
 prices['date'] = pd.to_datetime(prices['date'], format="%Y-%m-%d")
-#prices['year'] =  prices['date'].dt.year
+prices['year'] =  prices['date'].dt.year
 prices['month'] =  prices['date'].dt.month
 prices['quarter'] = prices['date'].dt.quarter
-#prices['day'] =  prices['date'].dt.day
-#prices['day_name'] =  prices['date'].dt.day_name()
+prices['day'] =  prices['date'].dt.day
+prices['day_name'] =  prices['date'].dt.day_name()
 
-#prices['day_name']=prices['day_name'].replace({'Monday': 1, 'Tuesday' : 2, 'Wednesday' : 3,'Thursday': 4, 'Friday':5}, regex=True)
+prices['day_name']=prices['day_name'].replace({'Monday': 1, 'Tuesday' : 2, 'Wednesday' : 3,'Thursday': 4, 'Friday':5}, regex=True)
 
-#prices_df = pd.get_dummies(data=prices, columns=['symbol'])
+prices_df = pd.get_dummies(data=prices, columns=['symbol'])
 
 #del prices_df['date']
 
@@ -40,7 +40,7 @@ df['date']=df['date'].replace({'00:00:00': ''}, regex=True)
 #del df['date']
 df['daily_returns'] = df['close'].pct_change()
 df['daily_returns'].dropna(inplace=True)
-#df['daily_returns']=df['daily_returns'].replace({'nan': 0}, regex=True)
+df['daily_returns']=df['daily_returns'].replace({'nan': 0}, regex=True)
 df['quarter'] = df['date'].dt.quarter
 
 df['symbol']=df['symbol'].replace({'WLTW': 1}, regex=True)
@@ -74,48 +74,47 @@ print(model_fit.aic)
 prediction = model_fit.forecast(steps = 25)[0]
 print(prediction)
 
-#plt.plot(test,color='red')
-#plt.plot(prediction)
-#RidgeCV(SelectFromModel(input_matrix, max_features=0.7000000000000001, n_estimators=100, threshold=0.15000000000000002))
+plt.plot(test,color='red')
+plt.plot(prediction)
+RidgeCV(SelectFromModel(input_matrix, max_features=0.7000000000000001, n_estimators=100, threshold=0.15000000000000002))
 
 plt.plot(prediction)
 plt.plot(test_data)
 
-#from plotly.plotly import plot_mpl
-#from statsmodels.tsa.seasonal import seasonal_decompose
-#result = seasonal_decompose(train, model=’multiplicative’)
-#fig = result.plot()
-#plot_mpl(fig)
+from plotly.plotly import plot_mpl
+from statsmodels.tsa.seasonal import seasonal_decompose
+result = seasonal_decompose(train, model=’multiplicative’)
+fig = result.plot()
+plot_mpl(fig)
 
-# import itertools
-# p=d=q = range(0,5)
-# pdq=list(itertools.product(p,d,q))
-# pdq
-#
-#
-# import warnings
-# warnings.filterwarnings('ignore')
-# for parameters in pdq:
-#    try:
-#         model = ARIMA(train, order=parameters)
-#         model_fit = model.fit()
-#          best = (parameters,model_fit.aic)
-#
-#     except:
-#         continue
-
-#dr = df[['daily_returns']]
-#dr.rolling(12).mean().plot(figsize=(10,10), linewidth=5, fontsize=10)
-#plt.xlabel('daily', fontsize=10);
+ import itertools
+ p=d=q = range(0,5)
+ pdq=list(itertools.product(p,d,q))
+ pdq
 
 
-#from sklearn.metrics import f1_score
+ import warnings
+ warnings.filterwarnings('ignore')
+ for parameters in pdq:
+    try:
+         model = ARIMA(train, order=parameters)
+         model_fit = model.fit()
+          best = (parameters,model_fit.aic)
 
-#print("F1 Score:", metrics.f1_score(test, prediction, average="weighted"))
+     except:
+         continue
+dr = df[['daily_returns']]
+dr.rolling(12).mean().plot(figsize=(10,10), linewidth=5, fontsize=10)
+plt.xlabel('daily', fontsize=10);
 
-#plt.title('Stocks')
-#plt.xlabel('Year')
-#plt.ylabel('Close')
-#plt.show()
-#df.plot(figsize=(20,10), linewidth=5, fontsize=20)
-#plt.xlabel('date', fontsize=20);
+
+from sklearn.metrics import f1_score
+
+print("F1 Score:", metrics.f1_score(test, prediction, average="weighted"))
+
+plt.title('Stocks')
+plt.xlabel('Year')
+plt.ylabel('Close')
+plt.show()
+df.plot(figsize=(20,10), linewidth=5, fontsize=20)
+plt.xlabel('date', fontsize=20);
