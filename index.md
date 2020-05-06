@@ -1,4 +1,4 @@
-## Welcome to Proquito's GitHub Page
+## Welcome to Tlou Ramapuputla's GitHub Page
 
 This is where you can find some of my Data science projects, from regression to classification
 
@@ -13,15 +13,7 @@ Syntax highlighted code block
 ## Header 2
 ### Header 3
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](C:\Users\Wilson.Ramapuputla\Pictures) and ![Image](src)
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
@@ -32,4 +24,5 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+tlouramapuputla@gmail.com.
+0731524883
