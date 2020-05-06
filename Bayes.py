@@ -26,12 +26,12 @@ x_test = scaler.fit_transform(x_test)
 data = pd.DataFrame(data=data)
 
 
-
-from xgboost import XGBClassifier, plot_importance
-model = XGBClassifier()
-model.fit(x_train, y_train)
 from xgboost import plot_importance
 plot_importance(model)
+
+
+model = GaussianNB()
+model.fit(x_train, y_train)
 
 prediction = model.predict(x_test)
 print("Accuracy:",metrics.accuracy_score(y_test, prediction))
