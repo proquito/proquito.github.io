@@ -23,10 +23,6 @@ x_test = scaler.fit_transform(x_test)
 
 
 
-#model = GaussianNB()
-#model.fit(x_train, y_train)
-
-
 data = pd.DataFrame(data=data)
 
 
@@ -42,4 +38,4 @@ print("Accuracy:",metrics.accuracy_score(y_test, prediction))
 print("F1 Score:", metrics.f1_score(y_test, prediction, average="weighted"))
 print("Confusion_matrics:", confusion_matrix(y_test, prediction))
 
-#plt.show()
+plt.show()
